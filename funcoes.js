@@ -66,11 +66,8 @@ function escalonarRR(dadosProcessos, quantum) {
   let indiceProcesso = 0;
 
   while (processosConcluidos.length < processosOriginais.length) {
-    // 1. Adiciona processos que chegaram
-    while (
-      indiceProcesso < processosAtuais.length &&
-      processosAtuais[indiceProcesso].chegada <= tempoAtual
-    ) {
+    // Adiciona processos que chegaram
+    while (indiceProcesso < processosAtuais.length && processosAtuais[indiceProcesso].chegada <= tempoAtual) {
       filaProntos.push(processosAtuais[indiceProcesso]);
       indiceProcesso++;
     }
@@ -89,7 +86,7 @@ function escalonarRR(dadosProcessos, quantum) {
         gantt.push({ id: p.id, inicio: tempoInicio, fim: tempoAtual });
       }
 
-      // 2. Adiciona NOVOS processos que chegaram DURANTE a execução
+      // Adiciona NOVOS processos que chegaram DURANTE a execução
       let processosParaAdicionar = [];
       while (
         indiceProcesso < processosAtuais.length &&
@@ -102,12 +99,12 @@ function escalonarRR(dadosProcessos, quantum) {
         filaProntos.push(...processosParaAdicionar);
       }
 
-      // 3. Verifica se o processo terminou
+      // Verifica se o processo terminou
       if (p.pico_restante === 0) {
         p.conclusao = tempoAtual;
         processosConcluidos.push(p);
       } else {
-        // 4. Coloca o processo de volta no final da fila (após os novos chegados)
+        // Coloca o processo de volta no final da fila (após os novos chegados)
         filaProntos.push(p);
       }
     } else if (indiceProcesso < processosAtuais.length) {
@@ -181,8 +178,6 @@ function renderizarGantt(elementId, gantt) {
   const timeMarkerContainer = document.createElement("div");
   timeMarkerContainer.className = "time-marker-container";
 
-  let lastTime = -1;
-
   for (const segmento of gantt) {
     const duracao = segmento.fim - segmento.inicio;
     const largura = duracao * escala;
@@ -195,22 +190,18 @@ function renderizarGantt(elementId, gantt) {
     segmentDiv.textContent = segmento.id;
     container.appendChild(segmentDiv);
 
-    // Adiciona marcas de tempo (apenas nos pontos de início de execução)
-    if (segmento.inicio !== lastTime) {
-      // Linha de marcação
-      const line = document.createElement("span");
-      line.className = "time-marker-line";
-      line.style.left = `${offset}px`;
-      timeMarkerContainer.appendChild(line);
+    // Adiciona marcas de tempo 
+    const line = document.createElement("span");
+    line.className = "time-marker-line";
+    line.style.left = `${offset}px`;
+    timeMarkerContainer.appendChild(line);
 
-      // Label de tempo
-      const label = document.createElement("span");
-      label.className = "time-marker-label";
-      label.style.left = `${offset}px`;
-      label.textContent = segmento.inicio;
-      timeMarkerContainer.appendChild(label);
-    }
-    lastTime = segmento.fim;
+    // Label de tempo
+    const label = document.createElement("span");
+    label.className = "time-marker-label";
+    label.style.left = `${offset}px`;
+    label.textContent = segmento.inicio;
+    timeMarkerContainer.appendChild(label);
   }
 
   // Marcação final
