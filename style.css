@@ -1,0 +1,212 @@
+/* styles.css - Estilização Melhorada */
+
+:root {
+    --color-primary: #007bff; /* Azul primário para botões e métricas */
+    --color-secondary: #28a745; /* Verde para cabeçalhos de tabela */
+    --color-background: #f8f9fa; /* Fundo leve */
+    --color-card: #ffffff; /* Fundo dos containers */
+    --color-text: #343a40; /* Texto escuro */
+    --color-border: #dee2e6; /* Linhas de borda */
+}
+
+/* Base e Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+.container {
+    max-width: 1300px;
+    margin: 20px auto;
+    background: var(--color-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+h1 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    font-size: 2em;
+    border-bottom: 3px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+h2 {
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 8px;
+    margin-top: 30px;
+}
+
+/* Dados de Entrada */
+#input-data {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+#input-data p {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+#input-data textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Consolas, monospace;
+}
+#input-data label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+#input-data input[type="number"] {
+    padding: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    width: 80px;
+    text-align: center;
+}
+#input-data button {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+    display: block;
+}
+#input-data button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Tabela de Resultados */
+table {
+    width: 100%;
+    border-collapse: separate; /* Usar separate para cantos arredondados */
+    border-spacing: 0;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+th, td {
+    border: 1px solid var(--color-border);
+    padding: 12px 8px;
+    text-align: center;
+}
+th {
+    background-color: var(--color-secondary);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border-color: var(--color-secondary);
+}
+tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+tr:hover {
+    background-color: #e9f7ff;
+}
+/* Arredondamento para os cantos da tabela */
+table thead tr:first-child th:first-child { border-top-left-radius: 8px; }
+table thead tr:first-child th:last-child { border-top-right-radius: 8px; }
+
+/* Métricas Médias */
+.metricas {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f0f8ff;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--color-primary);
+}
+.metricas div {
+    font-size: 1.1em;
+    color: var(--color-text);
+}
+.metricas strong {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+
+/* Diagrama de Gantt */
+.gantt-wrapper {
+    overflow-x: auto;
+    margin: 30px 0;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 10px 0 30px 0;
+    background-color: #fdfdfd;
+}
+.gantt-chart {
+    display: flex;
+    height: 50px;
+    position: relative;
+    min-width: 100%;
+}
+.gantt-segment {
+    height: 100%;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-weight: bold;
+    box-sizing: border-box;
+    position: absolute;
+    overflow: hidden;
+    transition: width 0.3s, left 0.3s; /* Adiciona transição suave */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Cores Iniciais (Mantenho as originais estilizadas) */
+.process-P1 { background-color: #e63946; } /* Vermelho Coral */
+.process-P2 { background-color: #457b9d; } /* Azul Petróleo */
+.process-P3 { background-color: #a8dadc; color: #1d3557; } /* Azul Claro (cor do texto trocada) */
+.process-P4 { background-color: #1d3557; } /* Azul Escuro */
+.process-P5 { background-color: #f4a261; } /* Laranja */
+.process-P6 { background-color: #2a9d8f; } /* Verde Água */
+
+/* Novas Cores Adicionadas (P7 a P13) */
+.process-P7 { background-color: #9b59b6; } /* Roxo Ametista */
+.process-P8 { background-color: #f1c40f; color: #333; } /* Amarelo (cor do texto trocada) */
+.process-P9 { background-color: #e74c3c; } /* Vermelho Forte */
+.process-P10 { background-color: #1abc9c; } /* Turquesa */
+.process-P11 { background-color: #d35400; } /* Laranja Abóbora */
+.process-P12 { background-color: #34495e; } /* Cinza Escuro */
+.process-P13 { background-color: #95a5a6; } /* Prata */
+
+/* Marcadores de Tempo */
+.time-marker-container {
+    position: relative;
+    width: 100%;
+    height: 25px;
+    margin-top: 5px;
+    pointer-events: none; /* Não interfere no mouse */
+}
+.time-marker-line {
+    position: absolute;
+    border-left: 2px dashed #999; /* Linha tracejada */
+    height: 10px;
+    top: -10px;
+}
+.time-marker-label {
+    position: absolute;
+    top: 10px;
+    transform: translateX(-50%);
+    font-size: 0.9em;
+    color: #6c757d;
+    font-weight: 500;
+}

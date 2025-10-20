@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Escalonamento (FCFS & RR)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Simulação de Algoritmos de Escalonamento</h1>
+
+    <div id="input-data">
+        <h2>Dados de Entrada</h2>
+        <p>Formato: ID, Tempo de Chegada, Tempo de Pico (Ex: P1, 0, 10)</p>
+        <textarea id="process-input">P1, 0, 10
+P2, 2, 5
+P3, 4, 3
+P4, 5, 4</textarea>
+        <label for="quantum-input">Quantum (para Round Robin):</label>
+        <input type="number" id="quantum-input" value="3" min="1">
+        <button onclick="iniciarSimulacao()">Executar Simulação</button>
+    </div>
+
+    <h2 id="fcfs-titulo">FCFS - First-Come, First-Served</h2>
+    <div class="metricas" id="fcfs-metricas"></div>
+    
+    <div class="gantt-wrapper">
+        <div id="gantt-fcfs" class="gantt-chart"></div>
+    </div>
+    
+    <table id="fcfs-tabela"></table>
+    
+    <h2 id="rr-titulo">Round Robin (RR) - Quantum: <span id="rr-quantum">3</span></h2>
+    <div class="metricas" id="rr-metricas"></div>
+    
+    <div class="gantt-wrapper">
+        <div id="gantt-rr" class="gantt-chart"></div>
+    </div>
+    
+    <table id="rr-tabela"></table>
+</div>
+
+<script src="funcoes.js"></script>
+</body>
+</html>
