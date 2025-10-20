@@ -1,17 +1,18 @@
-/* styles.css - Estilização Melhorada */
+/* styles.css - Estilo Original Aprimorado (Final) */
 
 :root {
     --color-primary: #007bff; /* Azul primário para botões e métricas */
-    --color-secondary: #28a745; /* Verde para cabeçalhos de tabela */
-    --color-background: #f8f9fa; /* Fundo leve */
-    --color-card: #ffffff; /* Fundo dos containers */
-    --color-text: #343a40; /* Texto escuro */
-    --color-border: #dee2e6; /* Linhas de borda */
+    --color-secondary: #28a745; /* Verde para cabeçalhos de tabela (FCFS e RR) */
+    --color-wps: #6f42c1; /* Roxo para o novo WPS */
+    --color-background: #f4f4f9;
+    --color-card: #ffffff;
+    --color-text: #343a40;
+    --color-border: #dee2e6;
 }
 
 /* Base e Layout */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: var(--color-background);
@@ -24,7 +25,7 @@ body {
     background: var(--color-card);
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 h1 {
     text-align: center;
@@ -72,6 +73,7 @@ h2 {
     border-radius: 4px;
     width: 80px;
     text-align: center;
+    margin-right: 20px; /* Espaçamento entre os campos de quantum */
 }
 #input-data button {
     background-color: var(--color-primary);
@@ -93,7 +95,7 @@ h2 {
 /* Tabela de Resultados */
 table {
     width: 100%;
-    border-collapse: separate; /* Usar separate para cantos arredondados */
+    border-collapse: separate;
     border-spacing: 0;
     margin-bottom: 30px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -104,6 +106,7 @@ th, td {
     text-align: center;
 }
 th {
+    /* COR DE CABEÇALHO PADRÃO (FCFS e RR) */
     background-color: var(--color-secondary);
     color: white;
     font-weight: 600;
@@ -111,6 +114,13 @@ th {
     font-size: 0.9em;
     border-color: var(--color-secondary);
 }
+
+/* Destaque para o cabeçalho do WPS */
+#wps-tabela th {
+    background-color: var(--color-wps);
+    border-color: var(--color-wps);
+}
+
 tr:nth-child(even) {
     background-color: #f8f8f8;
 }
@@ -146,9 +156,7 @@ table thead tr:first-child th:last-child { border-top-right-radius: 8px; }
 .gantt-wrapper {
     overflow-x: auto;
     margin: 30px 0;
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    padding: 10px 0 30px 0;
+    padding: 10px 0 30px 15px;
     background-color: #fdfdfd;
 }
 .gantt-chart {
@@ -166,27 +174,26 @@ table thead tr:first-child th:last-child { border-top-right-radius: 8px; }
     box-sizing: border-box;
     position: absolute;
     overflow: hidden;
-    transition: width 0.3s, left 0.3s; /* Adiciona transição suave */
+    transition: width 0.3s, left 0.3s;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Cores Iniciais (Mantenho as originais estilizadas) */
-.process-P1 { background-color: #e63946; } /* Vermelho Coral */
-.process-P2 { background-color: #457b9d; } /* Azul Petróleo */
-.process-P3 { background-color: #a8dadc; color: #1d3557; } /* Azul Claro (cor do texto trocada) */
-.process-P4 { background-color: #1d3557; } /* Azul Escuro */
-.process-P5 { background-color: #f4a261; } /* Laranja */
-.process-P6 { background-color: #2a9d8f; } /* Verde Água */
+/* Cores dos Processos (P1 a P13) */
+.process-P1 { background-color: #e63946; } 
+.process-P2 { background-color: #457b9d; } 
+.process-P3 { background-color: #a8dadc; color: #1d3557; } 
+.process-P4 { background-color: #1d3557; } 
+.process-P5 { background-color: #f4a261; } 
+.process-P6 { background-color: #2a9d8f; } 
+.process-P7 { background-color: #9b59b6; } 
+.process-P8 { background-color: #f1c40f; color: #333; }
+.process-P9 { background-color: #e74c3c; } 
+.process-P10 { background-color: #1abc9c; } 
+.process-P11 { background-color: #d35400; } 
+.process-P12 { background-color: #34495e; } 
+.process-P13 { background-color: #95a5a6; } 
 
-/* Novas Cores Adicionadas (P7 a P13) */
-.process-P7 { background-color: #9b59b6; } /* Roxo Ametista */
-.process-P8 { background-color: #f1c40f; color: #333; } /* Amarelo (cor do texto trocada) */
-.process-P9 { background-color: #e74c3c; } /* Vermelho Forte */
-.process-P10 { background-color: #1abc9c; } /* Turquesa */
-.process-P11 { background-color: #d35400; } /* Laranja Abóbora */
-.process-P12 { background-color: #34495e; } /* Cinza Escuro */
-.process-P13 { background-color: #95a5a6; } /* Prata */
 
 /* Marcadores de Tempo */
 .time-marker-container {
@@ -194,11 +201,11 @@ table thead tr:first-child th:last-child { border-top-right-radius: 8px; }
     width: 100%;
     height: 25px;
     margin-top: 5px;
-    pointer-events: none; /* Não interfere no mouse */
+    pointer-events: none;
 }
 .time-marker-line {
     position: absolute;
-    border-left: 2px dashed #999; /* Linha tracejada */
+    border-left: 2px dashed #999;
     height: 10px;
     top: -10px;
 }
